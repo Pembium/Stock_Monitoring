@@ -8,3 +8,4 @@
 ## Utilisation
 * Running stock_api.py as main pings the alhpa vantage API and sends the results to a personal telegram bot
 * Running stockBot.py as main sends test messages to a personal telegram bot
+* Personally I run it via a cron job once per day due to the limit in API pings (25 as of writing this)
