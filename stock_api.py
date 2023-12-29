@@ -56,6 +56,8 @@ if __name__ == "__main__":
         sixMonthPrices = sharePrices[len(sixMonthDates) - 1::-1][::-1]
 
         plt.figure(figsize=(15, 6))
+        plt.ylabel(f'Price (USD)')
+        plt.title(f'Stock: {listing}')
         plt.plot(sixMonthDates, sixMonthPrices)
 
         #decimate x axis for the plot
@@ -71,10 +73,10 @@ if __name__ == "__main__":
         percentage_change = ((start_price - end_price)/start_price) * 100
 
 
-        fifty_day_average = np.average(temp_data[-50:])
-        one_eighty_day_average = np.average(temp_data[-180:])
+        fifty_day_average = np.average(temp_data[-55:-45])
+        one_eighty_day_average = np.average(temp_data[-185:-175])
 
-        if end_price < fifty_day_average and end_price < one_eighty_day_average:
+        if fifty_day_average < one_eighty_day_average and end_price < one_eighty_day_average:
             delta_list = [temp_data[n] - temp_data[n-1] for n in range(1, len(temp_data))]
             
             gain = np.average(list(filter(lambda d: d > 0, delta_list[-14:])))
