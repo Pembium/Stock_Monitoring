@@ -6,7 +6,6 @@ import json
 import numpy as np
 from stockBot import Chat_Bot
 import sys
-API_KEY = "2ERY0TS1ZB1P88P9"
 
 def url_request(STOCK_LISTING):
     url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={STOCK_LISTING}&outputsize=full&apikey={API_KEY}'
@@ -14,16 +13,22 @@ def url_request(STOCK_LISTING):
     data = r.json()
     return data
 
-def read_json():
-    f = open("listings.json")
-    listings = json.load(f)
+def read_json(JSON):
+    f = open(JSON)
+    file = json.load(f)
     f.close
-    return listings.values()
+    return file
 
 if __name__ == "__main__":
-    listings = list(read_json())
+    config = read_json("config.json")
+    API_KEY = config["API_KEY"]
+    USER_ID = config["USER_ID"]
+    TOKEN = config["TOKEN"]
+    
+    cb = Chat_Bot(USER_ID, TOKEN)
 
-    cb = Chat_Bot()
+    listings = list(read_json("listings.json").values())
+
     today = date.today()
 
     init_message = f'Generating recommended stock options for {today}'

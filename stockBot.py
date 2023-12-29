@@ -2,11 +2,8 @@ import requests
 import telepot as tp
 from datetime import date
 
-token = "6707922079:AAFXZ0yloXTUC0waHDhXhjgGcmQb0r4dTS0"
-usrID = 6981497321
-
 class Chat_Bot():
-    def __init__(self, usrID=usrID, token=token):
+    def __init__(self, usrID, token):
         self.bot = tp.Bot(token)
         self.usrID = usrID
         self.token = token
