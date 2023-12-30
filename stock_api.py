@@ -28,14 +28,13 @@ if __name__ == "__main__":
     cb = Chat_Bot(USER_ID, TOKEN)
 
     listings = list(read_json("listings.json").values())
-
+    listings = ["IBM"]
     today = date.today()
 
     init_message = f'Generating recommended stock options for {today}'
     cb.sendMSG(init_message)
 
-    #flag for if there is any useful data gained
-    MSGFlag = False
+    purchase_list = []
 
     for listing in listings:
         data = url_request(listing, API_KEY)
@@ -44,11 +43,11 @@ if __name__ == "__main__":
             cb.sendMSG("Run out of API calls - Do we need to reduce the amount of calls made?")
             sys.exit(0)
         #Save file 
-        with open(f'/Stock_monitoring/{listing}.json', 'w') as fp:
+        with open(f'{listing}.json', 'w') as fp:
             json.dump(data, fp)
 
-        process(data, listing)
+        process(data, listing, purchase_list)
     
-    if not MSGFlag:
+    if len(purchase_list) == 0:
         cb.sendMSG("No stocks worth purchasing")
 

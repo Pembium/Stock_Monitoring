@@ -4,9 +4,8 @@ from datetime import date, timedelta, datetime
 import json
 import numpy as np
 from stockBot import Chat_Bot
-from tkinter.filedialog import askopenfilename
 
-def process(data, listing):
+def process(data, listing, purchase_list):
     today = date.today()
     startDate = today - timedelta(weeks=5*6)
     date_format = '%Y-%m-%d'
@@ -55,13 +54,4 @@ def process(data, listing):
         photo = f'stock_plots/6_month_data_{listing}.png'
         cb.sendPhoto(photo)
 
-        MSGFlag = True
-        
-if __name__ == "__main__":
-
-    filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
-    f = open(filename)
-    file = json.load(f)
-    f.close
-    print("Processing Data")
-    process(file, 'test')
+        purchase_list.append(listing)
