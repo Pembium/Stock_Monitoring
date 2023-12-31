@@ -45,7 +45,7 @@ if __name__ == "__main__":
         with open(f'{listing}.json', 'w') as fp:
             json.dump(data, fp)
 
-        process(data, listing, purchase_list)
+        process(data, listing, purchase_list, cb)
     
     if len(purchase_list) == 0:
         cb.sendMSG("No stocks worth purchasing")
