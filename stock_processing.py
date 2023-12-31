@@ -5,7 +5,7 @@ import json
 import numpy as np
 from stockBot import Chat_Bot
 
-def process(data, listing, purchase_list):
+def process(data, listing, purchase_list, cb):
     today = date.today()
     startDate = today - timedelta(weeks=5*6)
     date_format = '%Y-%m-%d'
