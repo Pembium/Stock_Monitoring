@@ -28,7 +28,6 @@ if __name__ == "__main__":
     cb = Chat_Bot(USER_ID, TOKEN)
 
     listings = list(read_json("listings.json").values())
-    listings = ["IBM"]
     today = date.today()
 
     init_message = f'Generating recommended stock options for {today}'
