@@ -45,8 +45,14 @@ if __name__ == "__main__":
         with open(f'{listing}.json', 'w') as fp:
             json.dump(data, fp)
 
-        process(data, listing, purchase_list, cb)
+        process(data, listing, purchase_list)
     
     if len(purchase_list) == 0:
         cb.sendMSG("No stocks worth purchasing")
+        sys.exit(0)
 
+    for stock in purchase_list:
+        message = f'Stock: {stock["Stock"]}, RS: {stock[RS]}, RSI: {stock["RSI"]}'
+        print(message)
+        cb.sendMSG(message)
+        cb.sendPhoto(f'stock_plots/6_month_data_{stock}.png')

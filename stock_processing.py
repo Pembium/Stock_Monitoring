@@ -5,7 +5,7 @@ import json
 import numpy as np
 from stockBot import Chat_Bot
 
-def process(data, listing, purchase_list, cb):
+def process(data, listing, purchase_list):
     today = date.today()
     startDate = today - timedelta(weeks=5*6)
     date_format = '%Y-%m-%d'
@@ -52,6 +52,6 @@ def process(data, listing, purchase_list, cb):
         cb.sendMSG(message)
 
         photo = f'stock_plots/6_month_data_{listing}.png'
-        cb.sendPhoto(photo)
-
-        purchase_list.append(listing)
+        
+        stock_info = {"Stock": listing, "RS": rs, "RSI": rsi}
+        purchase_list.append(stock_info)
