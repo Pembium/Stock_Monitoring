@@ -48,9 +48,6 @@ def process(data, listing, purchase_list):
         rs = gain/loss
         rsi = 100 - (100 / (1 + rs))
 
-        message = f'Stock: {listing}, RS: {round(rs, -3)}, RSI: {round(rsi, -3)}'
-        cb.sendMSG(message)
-
         photo = f'stock_plots/6_month_data_{listing}.png'
         
         stock_info = {"Stock": listing, "RS": rs, "RSI": rsi}
