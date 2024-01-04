@@ -52,7 +52,7 @@ if __name__ == "__main__":
         sys.exit(0)
 
     for stock in purchase_list:
-        message = f'Stock: {stock["Stock"]}, RS: {stock[RS]}, RSI: {stock["RSI"]}'
+        message = f'Stock: {stock["Stock"]}, RS: {stock["RS"]}, RSI: {stock["RSI"]}'
         print(message)
         cb.sendMSG(message)
         cb.sendPhoto(f'stock_plots/6_month_data_{stock}.png')
