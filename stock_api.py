@@ -42,7 +42,7 @@ if __name__ == "__main__":
             cb.sendMSG("Run out of API calls - Do we need to reduce the amount of calls made?")
             sys.exit(0)
         #Save file 
-        with open(f'stock_/{listing}.json', 'w') as fp:
+        with open(f'stock_data/{listing}.json', 'w') as fp:
             json.dump(data, fp)
 
         process(data, listing, purchase_list)
