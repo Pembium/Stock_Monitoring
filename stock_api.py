@@ -55,4 +55,4 @@ if __name__ == "__main__":
         message = f'Stock: {stock["Stock"]}, RS: {stock["RS"]}, RSI: {stock["RSI"]}'
         print(message)
         cb.sendMSG(message)
-        cb.sendPhoto(f'stock_plots/6_month_data_{stock}.png')
+        cb.sendPhoto(f'stock_plots/6_month_data_{stock["Stock"]}.png')
