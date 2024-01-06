@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Predictions</title>
+</head>
+<body>
+	<h1>{{data['Stock']}}</h1>
+	<p>RS: {{data['RS'] }}</p>
+	<p>RSI: {{data['RSI'] }}</p>
+
+	<h1>{{data['Stock']}} Plot</h1>
+	<img src="{{ url_for('static', filename='6_month_data_AAPL.png')}}" alt="Sample Image">
+</body>
+</html>
