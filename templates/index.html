@@ -5,11 +5,18 @@
     <title>Stock Predictions</title>
 </head>
 <body>
-	<h1>{{data['Stock']}}</h1>
-	<p>RS: {{data['RS'] }}</p>
-	<p>RSI: {{data['RSI'] }}</p>
-
-	<h1>{{data['Stock']}} Plot</h1>
-	<img src="{{ url_for('static', filename='6_month_data_AAPL.png')}}" alt="Sample Image">
+	<style> body { font-family: system-ui, "IBM Plex Sans"; } </style>
+	<h1>Stock Predictions</h1>
+	<u1>
+		{% for stock in data %}
+			<li>Stock: {{ stock['Stock'] }}, RS: {{ stock['RS'] }}, RSI: {{ stock['RSI'] }}</li>
+			{% if stock.has_image %}
+				<img src="{{url_for('static', filename=stock['IMG'])}}" alt="{{ stock.Stock }}">
+			{% else %}
+				<p>No image available</p>
+			{% endif %}
+		{% endfor %}
+	</u1>
+	<h1>
 </body>
 </html>
