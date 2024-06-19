@@ -47,9 +47,12 @@ def process(data, listing, purchase_list):
     loss = -1 * np.average(list(filter(lambda d: d < 0, delta_list[-14:])))
     rs = gain/loss
     rsi = 100 - (100 / (1 + rs))
+
     if (fifty_day_average < one_eighty_day_average and end_price < one_eighty_day_average) or (rsi <= 0.3) or (temp_data[-1] - min(temp_data) < price_range*0.1):
+
+        sf = 3
 
         photo = f'stock_plots/6_month_data_{listing}.png'
         
-        stock_info = {"Stock": listing, "RS": rs, "RSI": rsi, "%": ((temp_data[-1] - min(temp_data))/price_range)*100}
+        stock_info = {"Stock": round(listing, sf), "RS": round(rs, sf), "RSI": round(rsi, sf), "%": round(((temp_data[-1] - min(temp_data))/price_range)*100, sf)}
         purchase_list.append(stock_info)
