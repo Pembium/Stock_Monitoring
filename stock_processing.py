@@ -41,13 +41,13 @@ def process(data, listing, purchase_list):
     one_eighty_day_average = np.average(temp_data[-132:-122])
     price_range = max(temp_data) - min(temp_data)
 
+    delta_list = [temp_data[n] - temp_data[n-1] for n in range(1, len(temp_data))]
+    
+    gain = np.average(list(filter(lambda d: d > 0, delta_list[-14:])))
+    loss = -1 * np.average(list(filter(lambda d: d < 0, delta_list[-14:])))
+    rs = gain/loss
+    rsi = 100 - (100 / (1 + rs))
     if (fifty_day_average < one_eighty_day_average and end_price < one_eighty_day_average) or (rsi <= 0.3) or (temp_data[-1] - min(temp_data) < price_range*0.1):
-        delta_list = [temp_data[n] - temp_data[n-1] for n in range(1, len(temp_data))]
-        
-        gain = np.average(list(filter(lambda d: d > 0, delta_list[-14:])))
-        loss = -1 * np.average(list(filter(lambda d: d < 0, delta_list[-14:])))
-        rs = gain/loss
-        rsi = 100 - (100 / (1 + rs))
 
         photo = f'stock_plots/6_month_data_{listing}.png'
         
