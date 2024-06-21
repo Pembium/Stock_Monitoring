@@ -54,5 +54,5 @@ def process(data, listing, purchase_list):
 
         photo = f'stock_plots/6_month_data_{listing}.png'
         
-        stock_info = {"Stock": round(listing, sf), "RS": round(rs, sf), "RSI": round(rsi, sf), "%": round(((temp_data[-1] - min(temp_data))/price_range)*100, sf)}
+        stock_info = {"Stock": listing, "RS": round(rs, sf), "RSI": round(rsi, sf), "%": round(((temp_data[-1] - min(temp_data))/price_range)*100, sf)}
         purchase_list.append(stock_info)
