@@ -48,7 +48,7 @@ def process(data, listing, purchase_list):
     rs = gain/loss
     rsi = 100 - (100 / (1 + rs))
 
-    if (fifty_day_average < one_eighty_day_average and end_price < one_eighty_day_average) or (rsi <= 0.3) or (temp_data[-1] - min(temp_data) < price_range*0.1):
+    if (fifty_day_average < one_eighty_day_average and end_price < one_eighty_day_average) or (rsi <= 0.3) or (temp_data[-1] - min(temp_data) < price_range*0.25):
 
         sf = 3
 
