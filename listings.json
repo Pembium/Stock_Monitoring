@@ -18,5 +18,10 @@
     "Mastercard Class A": "MA", 
     "Broadcom": "AVGO", 
     "Home Depot": "HD", 
-    "Chevron Corporation": "CVX"
+    "Chevron Corporation": "CVX",
+    "Walmart":"WMT",
+    "Costco":"COST",
+    "Oracle":"ORCL",
+    "Netflix":"NFLX",
+    "AMD":"AMD"
 }
